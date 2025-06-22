@@ -6,15 +6,18 @@ function logMessage($msg) {
 
 $image = 'image.jpg';
 $audio = 'default.mp3';
-$text = 'text.php';
+$textUrl = 'txt.php'; // ✅ Dynamic source
 $output = 'today.mp4';
 
 // Check all files
 if (!file_exists($image)) { logMessage("Missing image.jpg"); exit("❌ No image"); }
 if (!file_exists($audio)) { logMessage("Missing default.mp3"); exit("❌ No audio"); }
-if (!file_exists($text)) { logMessage("Missing text.txt"); exit("❌ No text"); }
 
-$textContent = str_replace("\n", '\n', file_get_contents($text));
+// ✅ Fetch text from txt.php (can be static or dynamic PHP)
+$textContent = @file_get_contents($textUrl);
+if (!$textContent) { logMessage("Missing or failed to load txt.php"); exit("❌ No text content"); }
+
+$textContent = str_replace("\n", '\n', $textContent);
 
 // Build FFmpeg command
 $cmd = "ffmpeg -y -loop 1 -i $image -i $audio -vf \"drawtext=text='$textContent':fontcolor=white:fontsize=30:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest $output";
