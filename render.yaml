@@ -1,5 +1,26 @@
 services:
   - type: web
+    name: your-app-name-here
+    env: docker
+    plan: free
+    branch: main
+    region: oregon
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: PEXELS_API_KEY
+        value: your_pexels_api_key_here
+      - key: TTS_API_KEY
+        value: your_tts_api_key_here
+      - key: LANGUAGE
+        value: en-bn
+
+
+
+
+services:
+  - type: web
     name: word-video-render
     env: docker
     plan: free
