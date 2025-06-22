@@ -1,15 +1,31 @@
-FROM php:8.1-apache
+# Use PHP 8.2 with Apache
+FROM php:8.2-apache
 
+# Install all required system packages
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     curl \
+    unzip \
+    zip \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
-    zip unzip
+    libonig-dev \
+    default-mysql-client \
+    && docker-php-ext-install mysqli zip
 
+# Enable Apache rewrite module (for clean URLs)
 RUN a2enmod rewrite
+
+# Set working directory
 WORKDIR /var/www/html
+
+# Copy project files into container
 COPY . /var/www/html
-RUN chmod -R 755 /var/www/html
+
+# Fix permissions
+RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+
+# Expose port 80 (Apache default)
+EXPOSE 80
