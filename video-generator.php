@@ -6,7 +6,7 @@ function logMessage($msg) {
 
 $image = 'image.jpg';
 $audio = 'default.mp3';
-$text = 'text.txt';
+$text = 'text.php';
 $output = 'today.mp4';
 
 // Check all files
