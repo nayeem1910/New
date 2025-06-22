@@ -1,4 +1,4 @@
-<?php
+it<?php
 date_default_timezone_set('Asia/Dhaka'); // Optional: Set your timezone
 $logFile = "log.txt";
 
@@ -42,7 +42,7 @@ logMessage("Text: " . $firstLine);
 // $cmd = "ffmpeg -loop 1 -i $image -i $audio -vf \"drawtext=text=$escapedText:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
 
 
-$cmd = "ffmpeg -loop 1 -i $image -i $audio -t 10 -vf \"drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text={$escapedText}:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
+$cmd = "ffmpeg -loop 1 -i $image -i $audio -t 10 -vf \"drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text={Nayeem}:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
 
 
 
