@@ -39,7 +39,13 @@ $escapedText = escapeshellarg($firstLine);
 logMessage("Text: " . $firstLine);
 
 // FFmpeg command
-$cmd = "ffmpeg -loop 1 -i $image -i $audio -vf \"drawtext=text=$escapedText:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
+// $cmd = "ffmpeg -loop 1 -i $image -i $audio -vf \"drawtext=text=$escapedText:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
+
+
+$ffmpegCommand = "ffmpeg -loop 1 -i image.jpg -i default.mp3 -t 10 -vf \"drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text={$escapedText}:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y today.mp4";
+
+
+
 
 // Run FFmpeg
 logMessage("Running FFmpeg...");
