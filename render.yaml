@@ -7,6 +7,8 @@ services:
     region: oregon
     dockerContext: .
     dockerfilePath: Dockerfile
+    buildCommand: ""
+    startCommand: "php cron.php"
     autoDeploy: true
     envVars:
       - key: PEXELS_API_KEY
@@ -15,16 +17,3 @@ services:
         value: your_tts_api_key_here
       - key: LANGUAGE
         value: en-bn
-
-
-
-
-services:
-  - type: web
-    name: word-video-render
-    env: docker
-    plan: free
-    region: singapore
-    dockerfilePath: Dockerfile
-    buildCommand: ""
-    startCommand: "php cron.php"
