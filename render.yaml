@@ -12,7 +12,7 @@ services:
     autoDeploy: true
     envVars:
       - key: PEXELS_API_KEY
-        value: your_pexels_api_key_here
+        value: fOuF5nlf1UEsPIEuAeOjNeXpGXZAMCoxJWwNvyMkCyLWB8Oku5LZ4dpQ
       - key: TTS_API_KEY
         value: your_tts_api_key_here
       - key: LANGUAGE
