@@ -1,9 +1,19 @@
-services:
+    services:
   - type: web
-    name: word-video-render
+    name: your-app-name-here
     env: docker
     plan: free
-    region: singapore
+    branch: main
+    region: oregon
+    dockerContext: .
     dockerfilePath: Dockerfile
     buildCommand: ""
     startCommand: "php cron.php"
+    autoDeploy: true
+    envVars:
+      - key: PEXELS_API_KEY
+        value: your_pexels_api_key_here
+      - key: TTS_API_KEY
+        value: your_tts_api_key_here
+      - key: LANGUAGE
+        value: en-bn
