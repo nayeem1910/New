@@ -16,7 +16,7 @@ file_put_contents("ffmpeg_text.txt", $text);
 // FFmpeg drawtext filter
 $drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
           . "textfile='ffmpeg_text.txt':"
-          . "fontcolor=white:fontsize=32:x=(w-text_w)/2:y=(h-text_h)/2:"
+          . "fontcolor=white:fontsize=50:x=(w-text_w)/2:y=(h-text_h)/2:"
           . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
 
 // FFmpeg command
