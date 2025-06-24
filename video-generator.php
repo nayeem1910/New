@@ -14,13 +14,37 @@ $text = trim(shell_exec("php txt.php"));
 file_put_contents("ffmpeg_text.txt", $text);
 
 // FFmpeg drawtext filter
-$drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
-          . "textfile='ffmpeg_text.txt':"
-          . "fontcolor=white:fontsize=50:x=(w-text_w)/2:y=(h-text_h)/2:"
-          . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
+// $drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
+//          . "textfile='ffmpeg_text.txt':"
+ //         . "fontcolor=white:fontsize=50:x=(w-text_w)/2:y=(h-text_h)/2:"
+//          . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
+
+
+$mainWord = "Courage"; // You can change this dynamically too
+file_put_contents("text.txt", shell_exec("php txt.php"));
+
+$drawMain = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
+          . "text='$mainWord':"
+          . "fontcolor=white:"
+          . "fontsize=64:" // Bigger font
+          . "x=(w-text_w)/2:"
+          . "y=100:"
+          . "box=1:boxcolor=black@0.5:boxborderw=5";
+
+$drawDetails = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
+             . "textfile='text.txt':"
+             . "fontcolor=white:"
+             . "fontsize=32:"
+             . "line_spacing=10:"
+             . "x=(w-text_w)/2:"
+             . "y=200:"
+             . "box=1:boxcolor=black@0.5:boxborderw=5";
+             . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
+
+
 
 // FFmpeg command
-$ffmpegCommand = "ffmpeg -loop 1 -i $image -i voice.mp3 -i $audio -t 10 -vf \"$drawText\" -shortest -y $output";
+$ffmpegCommand = "ffmpeg -loop 1 -i $image -i voice.mp3 -i $audio -t 10 -vf \"$drawMain,$DrawDetails\" -y $output";
 
 // Run command and log
 file_put_contents($logFile, "[" . date("Y-m-d H:i:s") . "] Running FFmpeg...\n", FILE_APPEND);
