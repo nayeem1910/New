@@ -20,7 +20,7 @@ $drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold
           . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
 
 // FFmpeg command
-$ffmpegCommand = "ffmpeg -loop 1 -i $image -i $audio -t 10 -vf \"$drawText\" -shortest -y $output";
+$ffmpegCommand = "ffmpeg -loop 1 -i $image -i voice.mp3 -i $audio -t 10 -vf \"$drawText\" -shortest -y $output";
 
 // Run command and log
 file_put_contents($logFile, "[" . date("Y-m-d H:i:s") . "] Running FFmpeg...\n", FILE_APPEND);
