@@ -22,7 +22,6 @@ if (!empty($data['photos'][0]['src']['large'])) {
     $imageUrl = $data['photos'][0]['src']['large'];
     $imageContent = file_get_contents($imageUrl);
     file_put_contents("image.jpg", $imageContent);
-    echo "Image saved as image.jpg from keyword '$searchQuery'.";
     header("Location: fetch-bgm.php"); // 🔁 Redirect to next step
 } else {
     echo "No image found for '$searchQuery'.";
