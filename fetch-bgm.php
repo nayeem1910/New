@@ -18,6 +18,7 @@ if (!empty($data['results'][0]['previews']['preview-hq-mp3'])) {
     $mp3Data = file_get_contents($mp3Url);
     file_put_contents("default.mp3", $mp3Data);
     echo "✅ Music for '$word' saved as default.mp3";
+    header("Location: tts-generator.php"); // 🔁 Redirect to next step
 } else {
     echo "❌ No BGM found for '$word'";
 }
