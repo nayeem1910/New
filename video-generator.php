@@ -39,7 +39,7 @@ $drawDetails = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-B
              . "line_spacing=10:"
              . "x=(w-text_w)/2:"
              . "y=200:"
-             . "box=1:boxcolor=black@0.5:boxborderw=5"
+             . "box=1:boxcolor=black@0.5:boxborderw=5:"
              . "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
 
 
