@@ -44,7 +44,7 @@ $drawDetails = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-B
 
 
 // FFmpeg command
-$ffmpegCommand = "ffmpeg -loop 1 -i $image -i voice.mp3 -i $audio -t 10 -vf \"$drawMain,$DrawDetails\" -y $output";
+$ffmpegCommand = "ffmpeg -loop 1 -i $image -i voice.mp3 -i $audio -t 10 -vf \"$drawMain,$drawDetails\" -y $output";
 
 // Run command and log
 file_put_contents($logFile, "[" . date("Y-m-d H:i:s") . "] Running FFmpeg...\n", FILE_APPEND);
