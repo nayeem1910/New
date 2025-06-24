@@ -10,8 +10,9 @@ $audio = "default.mp3";
 $output = "today.mp4";
 
 // Generate text from PHP file
-$text = trim(shell_exec("php txt.php"));
-file_put_contents("ffmpeg_text.txt", $text);
+
+// $text = trim(shell_exec("php txt.php"));
+// file_put_contents("ffmpeg_text.txt", $text);
 
 // FFmpeg drawtext filter
 // $drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
@@ -52,6 +53,7 @@ exec($ffmpegCommand . " 2>&1", $outputLines, $exitCode);
 
 if ($exitCode === 0) {
     file_put_contents($logFile, "[" . date("Y-m-d H:i:s") . "] ✅ Video created successfully!\n", FILE_APPEND);
+ header("Location: today.mp4"); // 🔁 Redirect to next step
 } else {
     file_put_contents($logFile, "[" . date("Y-m-d H:i:s") . "] ❌ FFmpeg failed:\n" . implode("\n", $outputLines) . "\n", FILE_APPEND);
 }
