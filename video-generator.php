@@ -30,19 +30,26 @@ if (!file_exists($textSource)) {
 }
 
 // Read first line of text from txt.php
-$textRaw = file_get_contents($textSource);
-$textRaw = strip_tags($textRaw);
-$textLines = explode("\n", $textRaw);
-$firstLine = trim($textLines[0]);
-$escapedText = escapeshellarg($firstLine);
+// $textRaw = file_get_contents($textSource);
+// $textRaw = strip_tags($textRaw);
+// $textLines = explode("\n", $textRaw);
+// $firstLine = trim($textLines[0]);
+// $escapedText = escapeshellarg($firstLine);
 
-logMessage("Text: " . $firstLine);
+// logMessage("Text: " . $firstLine);
 
 // FFmpeg command
-// $cmd = "ffmpeg -loop 1 -i $image -i $audio -vf \"drawtext=text=$escapedText:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
+$escapedText = escapeshellarg(trim(shell_exec("php txt.php")));
 
+$drawText = "drawtext=fontfile='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf':"
+. "text=$escapedText:"
+. "fontcolor=white:"
+. "fontsize=32:"
+. "x=(w-text_w)/2:"
+. "y=(h-text_h)/2:"
+. "alpha='if(lt(t,1),0, if(lt(t,3),(t-1)/2, if(lt(t,5),1, if(lt(t,7),(7-t)/2, 0))))'";
 
-$cmd = "ffmpeg -loop 1 -i $image -i $audio -t 10 -vf \"drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text={Nayeem}:fontcolor=white:fontsize=24:x=(w-text_w)/2:y=(h-text_h)/2:box=1:boxcolor=black@0.5:boxborderw=5\" -shortest -y $output";
+$cmd = "ffmpeg -loop 1 -i $image -i $audio -t 10 -vf "$drawText" -shortest -y $output";
 
 
 
