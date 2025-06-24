@@ -13,7 +13,6 @@ $audioFile = "voice.mp3";
 $audioData = file_get_contents($url);
 
 if ($audioData && file_put_contents($audioFile, $audioData)) {
-    echo "✅ Voiceover created successfully!";
     header("Location: video-generator.php"); // 🔁 Redirect to next step
 } else {
     echo "❌ Voiceover creation failed!";
