@@ -41,3 +41,5 @@ if ($response === false) {
 } else {
     echo $response;
 }
+
+?>
