@@ -1,6 +1,6 @@
 $client = new Google_Client();
 $client->setClientId('982444537092-ku2dcpeolqd15oeqrcura8s86c8pshls.apps.googleusercontent.com');
-$client->setClientSecret('YOUR_CLIENT_SECRET');
+$client->setClientSecret('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');
 $client->setAccessToken(json_decode(file_get_contents('youtube-token.json'), true));
 
 if ($client->isAccessTokenExpired()) {
