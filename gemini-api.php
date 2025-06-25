@@ -1,5 +1,5 @@
 <?php
-$apiKey = ""; // Keep this secret
+$apiKey = "AIzaSyAniDZy-mJZD3RgKCpD64LPn8MzeT8vxgM"; // Keep this secret
 $inputText = $_POST['text'] ?? '';
 
 $data = [
