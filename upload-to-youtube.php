@@ -1,5 +1,5 @@
 $client = new Google_Client();
-$client->setClientId('YOUR_CLIENT_ID');
+$client->setClientId('982444537092-ku2dcpeolqd15oeqrcura8s86c8pshls.apps.googleusercontent.com');
 $client->setClientSecret('YOUR_CLIENT_SECRET');
 $client->setAccessToken(json_decode(file_get_contents('youtube-token.json'), true));
 
