@@ -7,7 +7,7 @@ services:
     region: oregon
     dockerContext: .
     dockerfilePath: Dockerfile
-    buildCommand: "composer install"
+    buildCommand: ""
     startCommand: "php cron.php"
     autoDeploy: true
     envVars:
